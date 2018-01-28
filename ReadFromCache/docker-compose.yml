@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  readfromcache:
+    image: venkateshsrini3/readfromcache:20180127041655
+    build:
+      context: .
+    ports:
+      - 80:80
+    labels:
+      kompose.service.type: LoadBalancer

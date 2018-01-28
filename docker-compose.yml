@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  readfromcache:
+    image: readfromcache
+    build:
+      context: .
+      dockerfile: ReadFromCache/Dockerfile
+    ports:
+      - 65069:80

@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Program Files\KomposeTool\kompose.exe convert
+    kompose.version: 1.4.0 (c7964e7)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: readfromcache
+  name: readfromcache
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: readfromcache
+    spec:
+      containers:
+      - image: venkateshsrini3/readfromcache:20180127041655
+        imagePullPolicy: Always
+        name: readfromcache
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\Program Files\KomposeTool\kompose.exe convert
+    kompose.version: 1.4.0 (c7964e7)
+  name: readfromcache-svc
+  creationTimestamp: null
+  labels:
+    io.kompose.service: readfromcache
+  name: readfromcache
+spec:
+  ports:
+  - name: "65069"
+    port: 65069
+    targetPort: 80
+    protocol: TCP
+  selector:
+    io.kompose.service: readfromcache
+    app: readfromcache
+  type: NodePort
+status:
+  loadBalancer: {}
