@@ -4,10 +4,15 @@ start kubernets
 -----------------
 minikube.exe start --vm-driver="hyperv" --hyperv-virtual-switch="kubevirtualswitch" --v=7 --alsologtostderr (for version 0.24)
 minikube start --kubernetes-version=v1.8.0 --vm-driver="hyperv" --hyperv-virtual-switch="kubevirtualswitch" ( for version 0.25)
+
 minikube addons enable ingress
+
 kubectl cluster-info
+
 kubectl get pods --all-namespaces
+
 kubectl proxy
+
 dashboard url - http://localhost:8001/ui
 
 install ingress
